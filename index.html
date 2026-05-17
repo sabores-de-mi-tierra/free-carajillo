@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carajillo Experience</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap" rel="stylesheet">
+
+<!-- PEGA ESTE CODIGO COMPLETO EN TU HTML -->
+<!-- REEMPLAZA TODO TU <style> POR ESTE -->
+
+<!-- PEGA ESTE CODIGO COMPLETO EN TU HTML -->
+<!-- REEMPLAZA TODO TU <style> POR ESTE -->
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* REEMPLAZA TU CSS .page Y body POR ESTE */
+
+/* BODY */
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:'Montserrat',sans-serif;
+    background:black;
+    color:white;
+    touch-action:pan-y;
+}
+
+/* PAGINAS */
+
+.page{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:100%;
+    transition:0.9s cubic-bezier(.77,0,.18,1);
+    overflow-y:auto;
+
+    /* QUITAR BARRA */
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+
+    padding:20px;
+    padding-bottom:120px;
+
+    -webkit-overflow-scrolling:touch;
+}
+
+/* QUITAR BARRA EN CHROME */
+
+.page::-webkit-scrollbar{
+    display:none;
+}
+
+.active{
+    left:0;
+}
+
+.active{
+    left:0;
+}
+
+/* FONDOS */
+
+.inicio{
+    background:
+    linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.9)),
+    url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200&auto=format&fit=crop');
+    background-size:cover;
+    background-position:center;
+}
+
+.historia{
+    background:linear-gradient(180deg,#1b120b,#050505);
+}
+
+.datos{
+    background:linear-gradient(180deg,#261400,#050505);
+}
+
+.ingredientes{
+    background:linear-gradient(180deg,#2d1700,#050505);
+}
+
+.preparacion{
+    background:linear-gradient(180deg,#140b00,#000);
+}
+
+.final{
+    background:black;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+    padding-bottom:120px;
+}
+
+.hero h1{
+    font-size:3.2rem;
+    color:#ffb347;
+    text-shadow:0 0 30px rgba(255,179,71,.8);
+    line-height:1;
+}
+
+.hero p{
+    margin-top:20px;
+    max-width:300px;
+    line-height:1.7;
+    color:#ddd;
+    font-size:0.95rem;
+}
+
+/* BOTON */
+
+.btn{
+    margin-top:30px;
+    padding:16px 35px;
+    border:none;
+    border-radius:100px;
+    background:linear-gradient(45deg,#ffb347,#ff7300);
+    color:white;
+    font-weight:bold;
+    letter-spacing:2px;
+    box-shadow:0 0 30px rgba(255,179,71,.6);
+    transition:.3s;
+    font-size:.9rem;
+}
+
+.btn:active{
+    transform:scale(.9);
+}
+
+/* TITULOS */
+
+.title{
+    margin-top:40px;
+    font-size:2.3rem;
+    color:#ffb347;
+    text-align:center;
+    font-weight:900;
+}
+
+/* CARDS */
+
+.cards{
+    margin-top:25px;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    padding-bottom:120px;
+}
+
+.card{
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:25px;
+    padding:20px;
+    backdrop-filter:blur(10px);
+    transform:translateY(80px);
+    opacity:0;
+    transition:1s;
+}
+
+.card.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+.card h2{
+    color:#ffb347;
+    margin-bottom:10px;
+    font-size:1.2rem;
+}
+
+.card p{
+    color:#ddd;
+    line-height:1.7;
+    font-size:0.9rem;
+}
+
+/* INGREDIENTES */
+
+.ingredient{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:18px;
+    background:rgba(255,255,255,.05);
+    padding:18px;
+    border-radius:20px;
+}
+
+.circle{
+    min-width:50px;
+    height:50px;
+    border-radius:50%;
+    background:linear-gradient(45deg,#ffb347,#ff7300);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:1.2rem;
+}
+
+.ingredient h3{
+    font-size:1rem;
+}
+
+.ingredient p{
+    font-size:.85rem;
+    color:#ddd;
+}
+
+/* PASOS */
+
+.step{
+    margin-top:18px;
+    padding:20px;
+    border-left:5px solid #ffb347;
+    background:rgba(255,255,255,.04);
+    border-radius:20px;
+}
+
+.step h3{
+    color:#ffb347;
+    margin-bottom:10px;
+    font-size:1rem;
+}
+
+.step p{
+    font-size:.9rem;
+    line-height:1.7;
+    color:#ddd;
+}
+
+/* FINAL */
+
+.finalContent{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+    padding-bottom:120px;
+}
+
+.finalContent h1{
+    font-size:3rem;
+    color:#ffb347;
+}
+
+.finalContent p{
+    margin-top:20px;
+    color:#ddd;
+    line-height:1.8;
+    max-width:300px;
+    font-size:.95rem;
+}
+
+/* MENU */
+
+.menu{
+    position:fixed;
+    bottom:10px;
+    left:50%;
+    transform:translateX(-50%);
+    width:95%;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(15px);
+    border-radius:25px;
+    padding:12px 8px;
+    display:flex;
+    justify-content:space-between;
+    gap:5px;
+    z-index:999;
+    overflow-x:auto;
+}
+
+.menu::-webkit-scrollbar{
+    display:none;
+}
+
+.menu button{
+    background:none;
+    border:none;
+    color:white;
+    font-size:.6rem;
+    white-space:nowrap;
+    padding:5px;
+}
+
+/* PARTICULAS */
+
+.particle{
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,179,71,.15);
+    animation:float linear infinite;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(120vh) scale(0);
+    }
+    to{
+        transform:translateY(-120vh) scale(1);
+    }
+}
+
+/* SWIPE */
+
+.swipe{
+    position:absolute;
+    bottom:90px;
+    width:100%;
+    text-align:center;
+    color:#aaa;
+    animation:move 2s infinite;
+    font-size:.8rem;
+}
+
+@keyframes move{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+/* PANTALLAS PEQUEÑAS */
+
+@media(max-width:400px){
+
+    .hero h1{
+        font-size:2.5rem;
+    }
+
+    .title{
+        font-size:2rem;
+    }
+
+    .menu button{
+        font-size:.55rem;
+    }
+
+}
+
+</style>
+
+</style>
+<meta name="theme-color" content="#000000">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+
+<!-- INICIO -->
+
+<section class="page inicio active">
+
+<div class="hero">
+
+<h1>CARAJILLO</h1>
+
+<p>
+Una bebida elegante donde el café y el licor crean una experiencia única.
+</p>
+
+<button class="btn" onclick="nextPage()">
+EXPLORAR
+</button>
+
+</div>
+
+<div class="swipe">
+Desliza ↑
+</div>
+
+</section>
+
+<!-- HISTORIA -->
+
+<section class="page historia">
+
+<h1 class="title">
+Historia
+</h1>
+
+<div class="cards">
+
+<div class="card">
+<h2>Origen</h2>
+<p>
+El carajillo nació hace muchos años como una mezcla de café y licor para dar energía y sabor intenso.
+</p>
+</div>
+
+<div class="card">
+<h2>Tradición</h2>
+<p>
+Con el tiempo se convirtió en una bebida elegante muy popular en restaurantes y bares.
+</p>
+</div>
+
+<div class="card">
+<h2>Actualidad</h2>
+<p>
+Hoy representa lujo, modernidad y experiencias premium.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- DATOS -->
+
+<section class="page datos">
+
+<h1 class="title">
+Datos Curiosos
+</h1>
+
+<div class="cards">
+
+<div class="card">
+<h2>☕ Café</h2>
+<p>
+El espresso intenso es la base principal del carajillo.
+</p>
+</div>
+
+<div class="card">
+<h2>🥃 Licor</h2>
+<p>
+Normalmente se prepara con licor dulce como Licor 43.
+</p>
+</div>
+
+<div class="card">
+<h2>❄️ Hielo</h2>
+<p>
+La mayoría se sirven fríos para una experiencia refrescante.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- INGREDIENTES -->
+
+<section class="page ingredientes">
+
+<h1 class="title">
+Ingredientes
+</h1>
+
+<div style="margin-top:40px;">
+
+<div class="ingredient">
+<div class="circle">☕</div>
+<div>
+<h3>Café Espresso</h3>
+<p>Intenso y aromático.</p>
+</div>
+</div>
+
+<div class="ingredient">
+<div class="circle">🥃</div>
+<div>
+<h3>Licor</h3>
+<p>Licor 43 o similar.</p>
+</div>
+</div>
+
+<div class="ingredient">
+<div class="circle">❄️</div>
+<div>
+<h3>Hielo</h3>
+<p>Para servir frío.</p>
+</div>
+</div>
+
+<div class="ingredient">
+<div class="circle">✨</div>
+<div>
+<h3>Canela</h3>
+<p>Opcional para decorar.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- PREPARACION -->
+
+<section class="page preparacion">
+
+<h1 class="title">
+Preparación
+</h1>
+
+<div class="step">
+<h3>Paso 1</h3>
+<p>Llena el vaso con hielo.</p>
+</div>
+
+<div class="step">
+<h3>Paso 2</h3>
+<p>Agrega el licor dulce.</p>
+</div>
+
+<div class="step">
+<h3>Paso 3</h3>
+<p>Sirve el espresso caliente.</p>
+</div>
+
+<div class="step">
+<h3>Paso 4</h3>
+<p>Mezcla suavemente y disfruta.</p>
+</div>
+
+</section>
+
+<!-- FINAL -->
+
+<section class="page final">
+
+<div class="finalContent">
+
+<h1>Gracias ☕</h1>
+
+<p>
+Gracias por visitar esta experiencia sobre el Carajillo.
+Esperamos que hayas disfrutado cada sabor, historia y detalle.
+Alejandro Esturban y Daniel Chunte
+</p>
+
+<button class="btn" onclick="reiniciar()">
+VOLVER AL INICIO
+</button>
+
+</div>
+
+</section>
+
+<!-- MENU -->
+
+<div class="menu">
+
+<button onclick="goPage(0)">Inicio</button>
+<button onclick="goPage(1)">Historia</button>
+<button onclick="goPage(2)">Datos</button>
+<button onclick="goPage(3)">Ingredientes</button>
+<button onclick="goPage(4)">Preparación</button>
+<button onclick="goPage(5)">Final</button>
+
+</div>
+
+<script>
+
+const pages = document.querySelectorAll('.page');
+
+let current = 0;
+
+/* MOSTRAR PAGINA */
+
+function showPage(index){
+
+    pages.forEach(page=>{
+        page.classList.remove('active');
+    });
+
+    pages[index].classList.add('active');
+
+    current = index;
+
+    animateCards();
+
+}
+
+/* SIGUIENTE */
+
+function nextPage(){
+
+    if(current < pages.length - 1){
+
+        showPage(current + 1);
+
+    }
+
+}
+
+/* IR A PAGINA */
+
+function goPage(index){
+
+    showPage(index);
+
+}
+
+/* REINICIAR */
+
+function reiniciar(){
+
+    showPage(0);
+
+}
+
+/* SWIPE */
+let startY = 0;
+let endY = 0;
+
+/* SWIPE CELULAR */
+
+document.addEventListener('touchstart',(e)=>{
+
+    startY = e.touches[0].clientY;
+
+},{passive:true});
+
+document.addEventListener('touchend',(e)=>{
+
+    endY = e.changedTouches[0].clientY;
+
+    let diff = startY - endY;
+
+    if(Math.abs(diff) > 60){
+
+        if(diff > 0){
+
+            if(current < pages.length - 1){
+
+                showPage(current + 1);
+
+            }
+
+        }else{
+
+            if(current > 0){
+
+                showPage(current - 1);
+
+            }
+
+        }
+
+    }
+
+},{passive:true});
+
+</script>
+
+</body>
+</html>
