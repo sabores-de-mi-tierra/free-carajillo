@@ -368,8 +368,6 @@ html,body{
 }
 
 </style>
-
-</style>
 <meta name="theme-color" content="#000000">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -673,6 +671,61 @@ document.addEventListener('touchend',(e)=>{
     }
 
 },{passive:true});
+/* AGREGA ESTE CODIGO AL FINAL DE TU <script> */
+
+/* MOSTRAR CARDS AL ENTRAR */
+
+function animateCards(){
+
+    let cards = pages[current].querySelectorAll('.card');
+
+    cards.forEach((card,index)=>{
+
+        card.classList.remove('show');
+
+        setTimeout(()=>{
+
+            card.classList.add('show');
+
+        }, index * 200);
+
+    });
+
+}
+
+/* EJECUTAR AL INICIO */
+
+animateCards();
+
+/* PARTICULAS */
+
+function createParticle(){
+
+    const particle = document.createElement('div');
+
+    particle.classList.add('particle');
+
+    let size = Math.random() * 15 + 5;
+
+    particle.style.width = size + 'px';
+    particle.style.height = size + 'px';
+
+    particle.style.left = Math.random() * window.innerWidth + 'px';
+
+    particle.style.animationDuration =
+    Math.random() * 5 + 5 + 's';
+
+    document.body.appendChild(particle);
+
+    setTimeout(()=>{
+
+        particle.remove();
+
+    },10000);
+
+}
+
+setInterval(createParticle,300);
 
 </script>
 
